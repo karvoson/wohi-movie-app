@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomeScreen from "./screens/HomeScreen";
+import RecommendationsScreen from "./screens/RecommendationsScreen";
+import FavoritesScreen from "./screens/FavoritesScreen";
+import AppNavbar from './components/NavBar';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [favorites, setFavorites] = useState([]);
+
+   const addToFavorites = (movie) => {
+    if (!favorites.includes(movie)) {
+      setFavorites([...favorites, movie]);
+    }
+  };
+
+  const removeFromFavorites = (movie) => {
+    setFavorites(favorites.filter((fav) => fav.id !== movie.id));
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <AppNavbar />
+      <Routes>
+        <Route path="/" 
+        element={<HomeScreen addToFavorites={addToFavorites} />} />
+        <Route path="/recommendations" 
+        element={<RecommendationsScreen addToFavorites={addToFavorites} />} />
+        
+        <Route
+          path="/favorites"
+          element={<FavoritesScreen favorites={favorites} onRemove={removeFromFavorites} />}
+        />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
