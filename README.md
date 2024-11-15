@@ -1,5 +1,6 @@
 # wohi-movie-app
-Movie Recommendations App
+Movie Recommendations App – Web Programming I Final Project
+
 The name is a little misleading, since the app doesn't actually recommend movies to its users based on their preferences. 
 
 How the app works:
