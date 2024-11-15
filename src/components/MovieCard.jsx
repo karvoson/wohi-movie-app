@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
-import "/Users/sonjakarvonen/wohi-movie-app/wohi-movie-app/src/App.css";
+import "./App.css";
 
 function MovieCard({ movie , onAdd, onRemove, isFavorite}) {
   const [isAdded, setIsAdded] = useState(false);
