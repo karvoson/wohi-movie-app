@@ -61,16 +61,22 @@ function RecommendationsScreen({addToFavorites}) {
   
 
   return (
-    <Container className="movie-card-container">
-      <h2>Recommended Movies</h2>
-
-        {/* Genre Filter Dropdown */}
+    <Container>
+        <Row>
+            <h2>Recommended Movies</h2>
+        </Row>
+        <Row>
+          <h4>Filter movies based on genre</h4>
+        </Row>
+      
+        <Row className="mb-3">
         <Form.Select
         aria-label="Filter by genre"
         onChange={handleGenreChange}
         value={selectedGenre}
         className="mb-3"
       >
+
         <option value="">All Genres</option>
         {genres.map((genre) => (
           <option key={genre.id} value={genre.id}>
@@ -78,16 +84,20 @@ function RecommendationsScreen({addToFavorites}) {
           </option>
         ))}
       </Form.Select>
-
+      </Row>
+   
       <Row>
         {filteredMovies.map((movie) => (
-          <Col key={movie.id} sm={12} md={6} lg={4} xl={3}>
+          <Col key={movie.id} sm="auto" md="auto" lg="auto" xl="auto">
             <MovieCard movie={movie} onAdd={addToFavorites} />
           </Col>
         ))}
       </Row>
-      <Button onClick={goToFavorites}>Go to Favorites</Button>
-
+      <Row>
+        <Col>
+        <Button className="button" onClick={goToFavorites}>Go to Favorites</Button>
+        </Col>
+      </Row>
     </Container>
   );
 }

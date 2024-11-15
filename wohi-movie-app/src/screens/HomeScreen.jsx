@@ -39,10 +39,12 @@ function HomeScreen({addToFavorites}) {
 
   return (
     <Container>
-      <Row className="my-3">
-        <Col>
+      <Row>
           <h1>Welcome to the Movie Recommendations App</h1>
-          <Button variant="primary" onClick={handleGetRecommendations}>
+          </Row>
+         <Row>
+          <Col>
+          <Button className="button" variant="primary" onClick={handleGetRecommendations}>
             Get Recommendations
           </Button>
         </Col>
@@ -50,6 +52,7 @@ function HomeScreen({addToFavorites}) {
       <Row>
         <h2>Top Rated Movies</h2>
       </Row>
+      <div>
       <Row>
         {popular.map((movie) => (
           <Col key={movie.id} sm={12} md={6} lg={4} xl={3}>
@@ -57,6 +60,7 @@ function HomeScreen({addToFavorites}) {
           </Col>
         ))}
       </Row>
+      </div>
   
     </Container>
     

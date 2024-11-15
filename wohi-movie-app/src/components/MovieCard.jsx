@@ -22,34 +22,30 @@ function MovieCard({ movie , onAdd, onRemove, isFavorite}) {
 
   return (
     <Card className="movie-card">
-      {}
-      <Card.Img variant="top" src={poster_path ? imageUrl : 'https://via.placeholder.com/500x750?text=No+Image'} />
+      <Card.Img className="movie-card img"variant="top" src={poster_path ? imageUrl : 'https://via.placeholder.com/500x750?text=No+Image'} />
       
-      <Card.Body>
-        {}
-        <Card.Title>{title}</Card.Title>
+      <Card.Body className="movie-card-body">
+    
+        <Card.Title className="movie-card-title">{title}</Card.Title>
         
-        {}
         <Card.Subtitle className="mb-2 text-muted">
           Release Date: {release_date}
         </Card.Subtitle>
         
-        {}
-        <Card.Text>
+        <Card.Text className="movie-card-text">
           {overview.length > 100 ? overview.substring(0, 100) + "..." : overview}
         </Card.Text>
     
-         {}
         {isAdded ? (
-          <Button variant="success" disabled>
+          <Button className="button" variant="success" disabled>
             Added to Favorites!
           </Button>
         ) : isFavorite ? (
-          <Button variant="danger" onClick={() => handleRemove()}>
+          <Button className="button" variant="danger" onClick={() => handleRemove()}>
             Remove from Favorites
           </Button>
         ) : (
-          <Button variant="primary" onClick={() => handleAdd()}>
+          <Button className="button" variant="primary" onClick={() => handleAdd()}>
             Add to Favorites
           </Button>
         )}

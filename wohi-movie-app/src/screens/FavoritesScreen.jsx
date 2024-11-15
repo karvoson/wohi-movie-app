@@ -5,13 +5,17 @@ import MovieCard from "../components/MovieCard";
 function FavoritesScreen({ favorites, onRemove }) {
   return (
     <Container>
+      <Row>
       <h2> Your Favorites</h2>
+      </Row>
       {favorites.length === 0 ? (
         <p>No favorites added yet!</p>
       ) : (
-      <Row>
+    
+      <Row >
+    
         {favorites.map((favorite) => (
-          <Col key={favorite.id} sm={12} md={6} lg={4} xl={3}>
+          <Col key={favorite.id} sm="auto" md="auto" lg="auto" xl="auto">
            <MovieCard
               movie={favorite}
               onRemove={onRemove}  
@@ -19,6 +23,7 @@ function FavoritesScreen({ favorites, onRemove }) {
             />
           </Col>
         ))}
+  
       </Row>
       )}
     </Container>
